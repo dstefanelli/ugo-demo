@@ -1,11 +1,13 @@
 <script setup>
-import Home from '@/views/Home.vue';
+import Footer from '@/components/Footer.vue';
+import Header from '@/components/Header.vue';
+import Dashboard from '@/views/Dashboard.vue';
 </script>
 
 <template>
-  <Home />
+  <Header />
+  <main class="page__wrapper">
+    <Dashboard userName="Hello Vue 3 + Vite" />
+  </main>
+  <Footer />
 </template>
-
-<style scoped>
-
-</style>
