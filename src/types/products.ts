@@ -1,8 +1,8 @@
 export interface Product {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    inStock: boolean;
-    expirationDate?: Date;
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  inStock: boolean;
+  expirationDate?: Date;
 }
