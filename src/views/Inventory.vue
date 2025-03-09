@@ -20,8 +20,11 @@ const addProduct = () => {
 </script>
 
 <template>
-  <div>
+  <div class="mx-auto overflow-hidden rounded-xl bg-white shadow-md">
     <h1>Inventario</h1>
+    <div>
+      <a href="/dashboard" class="text-green-700">Ir a Dashboard</a>
+    </div>
     <input v-model="newProduct" placeholder="Nombre del producto" />
     <button @click="addProduct">Agregar</button>
     <ul>
