@@ -6,6 +6,7 @@ import Inventory from '@/views/Inventory.vue';
 const routes: Array<RouteRecordRaw> = [
   { path: '/dashboard', component: Dashboard },
   { path: '/inventory', component: Inventory },
+  { path: '/:pathMatch(.*)*', redirect: '/dashboard' },
 ];
 
 const router = createRouter({

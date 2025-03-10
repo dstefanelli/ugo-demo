@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "age": "30-45",
+  "gender": "male",
+  "occupation": "farmer",
+  "location": "Lislie-sur-Tarn",
+  "annual_income": "€40,000-€60,000",
+  "name": "Charles Leclerc",
+  "username": "freshproducefarmer123",
+  "email": "freshproducefarmer123@example.com",
+  "phone_number": "555-123-4567",
+  "image": "https://randomuser.me/api/portraits/men/31.jpg"
+}

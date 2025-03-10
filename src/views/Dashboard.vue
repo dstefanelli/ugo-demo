@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,9 +24,9 @@ ChartJS.register(
   Legend
 );
 
-const userName = ref('Thomas');
-const orders = ref(23);
-const lastUpdated = ref('Hace 2 horas');
+const userStore = useUserStore();
+const orders = ref(2);
+const lastUpdated = ref('2 heures');
 const data = {
   labels: [
     'January',
@@ -79,33 +81,54 @@ const options = {
     },
   },
 };
+
+onMounted(() => {
+  userStore.fetchUser();
+});
 </script>
 
 <template>
   <div class="mx-auto overflow-hidden rounded-xl bg-white shadow-md">
     <div class="p-10">
-      <p class="font-bold text-sm text-gray-700">Dashboard</p>
+      <img
+        class="w-20 h-20 rounded-full"
+        :src="userStore.userImage.value"
+        :alt="userStore.userName.value"
+      />
       <div class="flex items-center justify-between mt-4">
-        <p class="text-gray-700">
-          Bienvenido {{ userName }} a tu panel de control de UgoFresh.
-        </p>
+        <div class="text-gray-700">
+          <p>
+            Bienvenue <strong>{{ userStore.userName }}</strong> sur votre
+            tableau de bord <strong>UgoFresh</strong>.
+          </p>
+          <p>De {{ userStore.userLocation }}</p>
+        </div>
         <div>
-          <a href="/inventory" class="text-green-700">Ir a Inventario</a>
+          <a
+            href="/inventory"
+            class="font-medium text-blue-800 hover:underline"
+          >
+            aller à l'inventaire ></a
+          >
         </div>
       </div>
 
       <div class="mt-4 mb-4">
         <div class="flex items-center justify-between">
           <div>
-            <h2 class="text-lg font-semibold">Pedidos Recientes</h2>
+            <h2 class="text-lg font-semibold text-gray-700">
+              Commandes récentes
+            </h2>
             <p class="text-gray-600">
-              Pedidos en las últimas 24 horas: <strong>{{ orders }}</strong>
+              Commandes des dernières 24 heures: <strong>{{ orders }}</strong>
             </p>
           </div>
           <div>
-            <h2 class="text-lg font-semibold">Información del Usuario</h2>
+            <h2 class="text-lg font-semibold text-gray-700">
+              Informations sur l'utilisateur
+            </h2>
             <p class="text-gray-600">
-              Última actualización: <strong>{{ lastUpdated }}</strong>
+              Dernière mise à jour: <strong>{{ lastUpdated }}</strong>
             </p>
           </div>
         </div>
